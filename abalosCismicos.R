@@ -24,6 +24,7 @@ plot(eData$mag, eData$depth, col = clusterModel$cluster, pch = 19, xlab = "Magni
      ylab = "Depth", main = "Terremotos")
 par(new=TRUE)
 
+clusterModel <- kmeans(iris[, 1:4], centers = 3, nstart = 100)
 clusterModel
 
 eData[clusterModel$cluster == 1, ]
@@ -35,6 +36,7 @@ pc.comp1 <- -1*pc.comp[,1]
 pc.comp2 <- -1*pc.comp[,2]
 newComp <- cbind(pc.comp1, pc.comp2)
 cl <- kmeans(newComp, nrCluster)
-plot(pc.comp1, pc.comp2,col=cl$cluster,xlab = "Componente 1", ylab = "Componente 2",
+plot(pc.comp1, pc.comp2,col=clusterModel$cluster,xlab = "Componente 1", ylab = "Componente 2",
      main = "KMeans & PCA")
 points(cl$centers, pch=16)
+
